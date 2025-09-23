@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* body {
+    background-color: #d4e6f1; 
+    font-family: 'Segoe UI', sans-serif;
+  } */
+
+  .contact-container {
+    padding: 60px 20px;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: #a34100;
+  }
+
+  .contact-description p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .contact-info {
+    margin-top: 30px;
+  }
+
+  .contact-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+
+  .contact-info i {
+    margin-right: 10px;
+    color: #72ca00;
+    font-size: 1.2rem;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #444;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #a34100;
+  }
+
+  .styled-input {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+
+  .styled-input::placeholder {
+    color: #aaa;
+  }
+
+  .submit-button {
+    background-color: #a34100;
+    color: black;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: #802f00;
+  }
+
+  .form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .form-section {
+      flex-direction: column;
+    }
+
+    .contact-left,
+    .contact-right {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+</style>
+
+<div class="container contact-container">
+  <div class="row form-section">
+    <!-- Left Column -->
+    <div class="col-md-6 contact-left">
+      <h2 class="contact-title">Contact <span class="highlight">Me</span></h2>
+      <div class="contact-description">
+        <p><strong>Let's Work Together</strong></p>
+        <p class="fw-bold" style="color:#b95614;">
+          Need an eager to Work developer to bring your ideas to life, or just want
+          to connect — I’m all ears. Let’s turn ideas into functional, beautiful
+          digital experiences.
+        </p>
+      </div>
+
+      <div class="contact-info">
+        <p><i class="fas fa-paper-plane"></i> reachoutnila@gmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> +91 7539944245</p>
+      </div>
+
+      <div class="social-icons">
+        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
+        <!-- <a href="#"><i class="fab fa-whatsapp"></i></a> -->
+        <a href="https://github.com/NilaRamamoorthy"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/nila-ramamoorthy-a56391372/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Right Column (Form) -->
+    <div class="col-md-6 contact-right">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.email }}
+        {{ form.subject }}
+        {{ form.message }}
+
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FontAwesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}

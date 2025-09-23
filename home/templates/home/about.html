@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container pb-5">
+  <h2 class="fw-bold text-center mb-4">
+    About <span style="color: #c75100;">Me</span>
+  </h2>
+
+  <!-- About Description -->
+  <div class="about-description fade-in mb-5 text-center">
+    <p class="lead fw-bold">{{ about.description }}</p>
+  </div>
+
+  <!-- Animated Info Table -->
+  <div class="about-table-container">
+    <div class="table-card">
+      <table class="table about-table text-center">
+        <tbody>
+          <tr class="table-row">
+            <th><i class="fas fa-user"></i> Name</th>
+            <td class="fw-bold">Nila Ramamoorthy</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-cake-candles"></i> D.O.B</th>
+            <td class="fw-bold">11th Oct 1995</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-map-marker-alt"></i> Native</th>
+            <td class="fw-bold">Kumbakonam</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-language"></i> Languages</th>
+            <td class="fw-bold">Tamil, English</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-graduation-cap"></i> Education</th>
+            <td class="fw-bold">B.E ECE</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-calendar-alt"></i> Year of Graduation</th>
+            <td class="fw-bold">2013–2017</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-university"></i> Graduated From</th>
+            <td class="fw-bold">Karpagam Institute of Technology, Coimbatore</td>
+          </tr>
+          <tr class="table-row">
+            <th><i class="fas fa-briefcase"></i> Occupation</th>
+            <td class="fw-bold">Trainee at VTS</td>
+          </tr>
+          <!-- <tr class="table-row">
+            <th><i class="fas fa-code"></i> Skills</th>
+            <td class="fw-bold">{{ about.skills }}</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Animation Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const rows = document.querySelectorAll(".table-row");
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = `rowFadeIn 0.6s ease forwards ${index * 0.15}s`;
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    rows.forEach((row) => {
+      row.style.opacity = 0;
+      observer.observe(row);
+    });
+  });
+</script>
+{% endblock %}

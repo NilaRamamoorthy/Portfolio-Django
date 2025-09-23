@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container text-center text-white my-5">
+  <h2>My Work</h2>
+  <p>I have included the GitHub links to the projects for your reference. You can click on the image to view them.</p>
+
+  <div class="row justify-content-center">
+    {% for project in projects %}
+    <div class="col-md-4 mb-4">
+      <!-- Project Card -->
+      <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal{{ project.id }}">
+        <img src="{{ project.images.first.image.url }}" class="card-img-top" alt="{{ project.title }}">
+        <div class="overlay">
+          <div class="overlay-text">
+            <h5>{{ project.title }}</h5>
+            <p>{{ project.short_description }}</p>
+          </div>
+        </div>
+      </div>
+      <h5 class="mt-2">{{ project.title }}</h5>
+    </div>
+
+    <!-- Modal -->
+   <div class="modal fade " id="projectModal{{ project.id }}" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered tranparent">
+    <div class="modal-content custom-modal">
+      <div class="modal-body row">
+        
+        <!-- Left: Images -->
+        <div class="col-md-6 d-flex justify-content-start align-items-center">
+          <div class="image-stack">
+            {% for img in project.images.all %}
+              <img src="{{ img.image.url }}" class="stacked-img {% if forloop.first %}front{% endif %}" alt="Project image">
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Right: Details -->
+        <div class="col-md-6 text-center mt-4">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.long_description }}</p>
+          <a href="{{ project.github_link }}" target="_blank" class="btn btn-dark me-2">View Code</a>
+          <a href="{{ project.live_link }}" target="_blank" class="btn btn-primary">View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+
+  <!-- Moon Icon -->
+  <!-- <i class="fas fa-moon moon mt-5 text-warning"></i> -->
+
+  <!-- Scroll Down Arrow -->
+  <!-- <div class="scroll-down-arrow">
+    <i class="fas fa-chevron-down"></i>
+  </div> -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm custom-navbar">
+
+
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="fas fa-moon text-warning mx-3"></i>  Portfolio
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/skills/' %}active{% endif %}" href="/skills/">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/projects/' %}active{% endif %}" href="/projects/">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5 pt-5">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="mb-3">
+      <a href="https://github.com/NilaRamamoorthy" target="_blank" class="text-white me-3"><i
+          class="fab fa-github fa-lg"></i></a>
+      <a href="https://www.linkedin.com/in/nila-ramamoorthy-a56391372/" target="_blank" class="text-white me-3"><i
+          class="fab fa-linkedin fa-lg"></i></a>
+      <a href="mailto:reachout@gmail.com" class="text-white"><i class="fa-solid fa-envelope fa-lg"></i></a>
+    </div>
+    <p class="mb-0">Developed by <strong>Nila Ramamoorthy</strong> <span
+                style="color: goldenrod;"><i class="bi bi-moon"></i></span></p>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Typing Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const roles = ["{{ profile.role1 }}", "{{ profile.role2 }}"];
+      let roleIndex = 0;
+      let charIndex = 0;
+      let typing = true;
+
+      function type() {
+        const typingElement = document.getElementById("typing");
+        if (!typingElement) return;
+
+        if (typing) {
+          typingElement.textContent = roles[roleIndex].substring(0, charIndex++);
+          if (charIndex > roles[roleIndex].length) {
+            typing = false;
+            setTimeout(type, 1000);
+            return;
+          }
+        } else {
+          typingElement.textContent = roles[roleIndex].substring(0, charIndex--);
+          if (charIndex < 0) {
+            typing = true;
+            roleIndex = (roleIndex + 1) % roles.length;
+          }
+        }
+        setTimeout(type, 150);
+      }
+      type();
+    });
+  </script>
+
+  <!-- Snow Animation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      for (let i = 0; i < 50; i++) {
+        let snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        snowflake.style.width = snowflake.style.height = (Math.random() * 4 + 2) + 'px';
+        document.body.appendChild(snowflake);
+      }
+    });
+  </script>
+<script>
+document.querySelectorAll('.image-stack').forEach(stack => {
+  const images = stack.querySelectorAll('.stacked-img');
+
+  stack.addEventListener('mouseenter', () => {
+    images.forEach((img, i) => {
+      img.style.transitionDelay = `${i * 150}ms`; // Slower stagger (150ms steps)
+    });
+  });
+
+  stack.addEventListener('mouseleave', () => {
+    images.forEach((img, i) => {
+      const reverseIndex = images.length - 1 - i;
+      img.style.transitionDelay = `${reverseIndex * 150}ms`;
+    });
+  });
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="skills fade-in-up-scroll py-5 px-3" id="skills">
+  <div class="container">
+    <h2 class="text-center fw-bold text-white mb-5" style="color: rgb(156, 118, 6);">My Skills</h2>
+
+    <div class="skills-section">
+
+      <!-- Technical Skills -->
+      <div class="technical fade-in" id="technical">
+    <h4 class="text-warning">Technical Skills</h4>
+
+    {% for skill in skills %}
+    <div class="skill">
+        <div class="skill-name">
+            <span>{{ skill.name }}</span>
+            <span class="value">{{ skill.percentage }}%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="bar-fill" data-percent="{{ skill.percentage }}"></div>
+        </div>
+    </div>
+    {% empty %}
+        <p>No skills available.</p>
+    {% endfor %}
+</div>
+
+
+   <!-- Skill Descriptions -->
+<div class="skill-descriptions mt-5 fade-in">
+    <div class="desc-box">
+  <h5><i class="fa-solid fa-code text-danger me-2"></i> Frontend Development</h5>
+  <p>
+    I have hands-on experience with modern frontend technologies like <strong>HTML5</strong>, <strong>CSS3</strong>, <strong>Bootstrap</strong>, and <strong>JavaScript</strong> for crafting visually appealing and responsive interfaces. I focus on creating clean, semantic layouts and ensuring user-friendly design across devices.
+    <br /><br />
+    Currently, I'm learning <strong>ReactJS</strong> to level up my frontend development skills. I'm understanding core concepts such as <strong>components</strong>, <strong>props</strong>, <strong>state management</strong>, and <strong>JSX</strong>. My goal is to build dynamic, interactive single-page applications and eventually integrate React with backend APIs using Django or Flask.
+    <br /><br />
+    I enjoy the creative freedom the frontend offers and strive to build interfaces that are both beautiful and intuitive.
+  </p>
+</div>
+
+  <div class="desc-box">
+    <h5><i class="fab fa-python text-warning me-2"></i> Python</h5>
+    <p>
+      Python is a high-level, interpreted language known for its clean syntax and readability, making it ideal for beginners and professionals alike. 
+      I use Python extensively for backend development, automation scripts, and data processing tasks. My experience includes writing modular, reusable code and leveraging libraries like <strong>NumPy</strong>, <strong>Pandas</strong>, and <strong>Requests</strong>. Python is the core language I’m focusing on for my journey into full-stack development.
+    </p>
+  </div>
+
+  <div class="desc-box">
+    <h5><i class="fab fa-python text-success me-2"></i> Django</h5>
+    <p>
+      Django is a robust, high-level web framework built on Python, perfect for rapid development and clean design. I've worked with Django to build full-stack applications using the <strong>MVT (Model-View-Template)</strong> pattern. I'm comfortable creating models, working with Django ORM, handling form validation, user authentication, and building RESTful APIs using <strong>Django REST Framework</strong>. I also understand deployment using tools like <strong>Gunicorn</strong> and <strong>Heroku</strong>.
+    </p>
+  </div>
+
+  <div class="desc-box">
+    <h5><i class="fa-solid fa-flask text-info me-2"></i> Flask</h5>
+    <p>
+      Flask is a lightweight WSGI web application framework that gives you the power to develop applications quickly and flexibly. I’ve used Flask for creating small web apps and APIs where speed and customization are essential. I’ve implemented routing, templates with Jinja2, and API endpoints. It helped me understand the internal workings of a backend web server and how to handle HTTP requests efficiently.
+    </p>
+  </div>
+
+  <div class="desc-box">
+    <h5><i class="fa-solid fa-database text-primary me-2"></i> SQL</h5>
+    <p>
+      SQL (Structured Query Language) is essential for handling relational databases. I’m skilled at writing complex queries to extract, filter, and manipulate data in systems like <strong>SQLite</strong> and <strong>PostgreSQL</strong>. My knowledge includes <strong>joins</strong>, <strong>aggregate functions</strong>, <strong>subqueries</strong>, and <strong>normalization</strong>. I also understand how to integrate SQL databases with Django and Flask backends for dynamic web applications.
+    </p>
+  </div>
+</div>
+
+      <!-- Professional Skills -->
+      <div class="professional fade-in mt-5" id="professional">
+        <h4 class="text-warning">Professional Skills</h4>
+        <div class="d-flex flex-wrap justify-content-center gap-4 mt-4">
+          <div class="circle-skill">
+            <div class="circle" data-percent="70"><div class="circle-text text-white">70%</div></div>
+            <p>Creativity</p>
+          </div>
+          <div class="circle-skill">
+            <div class="circle" data-percent="65"><div class="circle-text text-white">65%</div></div>
+            <p>Communication</p>
+          </div>
+          <div class="circle-skill">
+            <div class="circle" data-percent="75"><div class="circle-text text-white">75%</div></div>
+            <p>Problem Solving</p>
+          </div>
+          <div class="circle-skill">
+            <div class="circle" data-percent="85"><div class="circle-text text-white">85%</div></div>
+            <p>Teamwork</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- JS: Animate Skills -->
+<script>
+  function animateCircle(circle, percent) {
+    let current = 0;
+    const step = () => {
+      if (current <= percent) {
+        circle.style.background = `conic-gradient(#6ca40b ${current}%, #222 ${current}%)`;
+        current++;
+        requestAnimationFrame(step);
+      }
+    };
+    requestAnimationFrame(step);
+  }
+
+  function animateSkills() {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const percent = bar.getAttribute('data-percent');
+      bar.style.width = percent + '%';
+    });
+
+    document.querySelectorAll('.circle').forEach(circle => {
+      const percent = parseInt(circle.getAttribute('data-percent'));
+      animateCircle(circle, percent);
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateSkills();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+{% endblock %}

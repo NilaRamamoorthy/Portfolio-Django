@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero-section text-center text-white  py-2">
+    <!-- Profile Image -->
+    <img src="{{ profile.profile_image.url }}" alt="{{ profile.name }}" 
+         class="rounded-circle shadow-lg mb-4" width="200" height="200">
+
+    <!-- Info -->
+    <h1 class="fw-bold">{{ profile.name }}</h1>
+    <h3>I'm a <span id="typing"></span></h3>
+    <p class="mt-3">{{ profile.bio }}</p>
+
+    <!-- Social Icons -->
+   <div class="mt-3 text-center">
+  <a href="/about/" class="btn btn-glow mt-4" style="background-color: #722f05;">
+    More About Me
+  </a>
+</div>
+
+</div>
+<!-- Recent Projects-->
+{% load static %}
+
+<h1 class="text-center my-5">Featured Projects</h1>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 d-flex">
+  {% for project in projects %}
+    <div class="col d-flex">
+      <div class="card flex-fill shadow-lg">
+        {% with project.images.first as image %}
+          {% if image %}
+            <img src="{{ image.image.url }}" class="card-img-top" alt="{{ project.title }}">
+          {% else %}
+            <img src="{% static 'default.jpg' %}" class="card-img-top" alt="Default image">
+          {% endif %}
+        {% endwith %}
+        <div class="card-body d-flex flex-column text-center">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.short_description }}</p>
+          <div class="mt-auto">
+            <a href="{{ project.live_link }}" target="_blank" class="btn btn-primary btn-sm">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No projects available.</p>
+  {% endfor %}
+</div>
+
+</div>
+
+
+{% endblock %}
