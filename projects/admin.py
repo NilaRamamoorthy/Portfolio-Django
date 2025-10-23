@@ -1,9 +1,12 @@
 from django.contrib import admin
-from .models import Skill
+from .models import Skill, Technology
 
 admin.site.register(Skill)
 
 from .models import Project, ProjectImage
+
+admin.site.register(Technology)
+
 
 class ProjectImageInline(admin.TabularInline):   # or StackedInline
     model = ProjectImage

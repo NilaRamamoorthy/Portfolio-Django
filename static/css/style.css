@@ -1,6 +1,7 @@
 /* Background animation */
 
-body, html {
+body,
+html {
   overflow-x: hidden;
 }
 
@@ -15,9 +16,17 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
 }
 
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* === Falling Snow Animation === */
@@ -28,7 +37,7 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
   border-radius: 50%;
   opacity: 0.8;
   z-index: 9999;
-/* 
+  /* 
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite; */
@@ -40,6 +49,7 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
     transform: translateY(0) translateX(0);
     opacity: 0.8;
   }
+
   100% {
     transform: translateY(100vh) translateX(30px);
     opacity: 0;
@@ -58,8 +68,15 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
 }
 
 @keyframes moonGlow {
-  0% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 1; transform: scale(1.05); }
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 }
 
 /* === Scroll Down Arrow === */
@@ -75,16 +92,31 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-10px); }
-  60% { transform: translateX(-50%) translateY(-5px); }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 
 /* Navbar link animation */
 .custom-navbar {
-  background-color: rgba(211, 211, 211, 0.6);  /* lightgrey with 60% opacity */
-  backdrop-filter: blur(8px);                 /* optional blur effect */
+  background-color: rgba(211, 211, 211, 0.6);
+  /* lightgrey with 60% opacity */
+  backdrop-filter: blur(8px);
+  /* optional blur effect */
   transition: background-color 0.3s ease;
 }
 
@@ -92,9 +124,11 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
   position: relative;
   transition: color 0.3s ease;
 }
+
 .nav-link:hover {
   color: #ffd700 !important;
 }
+
 .nav-link::after {
   content: "";
   position: absolute;
@@ -106,11 +140,13 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
   background: #ffd700;
   transition: width 0.3s ease;
 }
+
 .nav-link:hover::after {
   width: 100%;
   left: 0;
   background: #ffd700;
 }
+
 .nav-link.active {
   color: #3d5e03 !important;
   font-weight: bold;
@@ -131,6 +167,7 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
 footer a {
   transition: transform 0.3s ease, color 0.3s ease;
 }
+
 footer a:hover {
   transform: scale(1.2);
   color: #ffd700 !important;
@@ -155,6 +192,7 @@ footer a:hover {
   color: #6ca40b;
   font-weight: bold;
 }
+
 .btn-glow {
   color: #fff;
   background-color: #722f05;
@@ -219,14 +257,17 @@ footer a:hover {
 }
 
 .about-table td {
-  background-color: #d0e7ff; /* Light blue */
-  color: #000; /* Dark text for contrast */
+  background-color: #d0e7ff;
+  /* Light blue */
+  color: #000;
+  /* Dark text for contrast */
   border-radius: 6px;
   transition: background-color 0.3s ease;
 }
 
 .about-table td:hover {
-  background-color: #f0f4fa; /* Slightly darker on hover */
+  background-color: #f0f4fa;
+  /* Slightly darker on hover */
   color: #3d5e03;
   font-style: italic;
 }
@@ -254,11 +295,13 @@ footer a:hover {
     opacity: 0;
     transform: translateY(30px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 /* skills */
 
 .skills-section .skill {
@@ -282,7 +325,8 @@ footer a:hover {
 
 .bar-fill {
   height: 100%;
-  width: 0; /* Set by JS animation */
+  width: 0;
+  /* Set by JS animation */
   border-radius: 5px;
   /* background: linear-gradient(90deg, #02a395, #4cc7c9, #298ec5);  Gradient */
   background: linear-gradient(90deg, #a8e063, #56ab2f, #6ca40b);
@@ -296,6 +340,7 @@ footer a:hover {
   0% {
     background-position: 100% 0;
   }
+
   100% {
     background-position: 0 0;
   }
@@ -308,14 +353,17 @@ footer a:hover {
   padding: 10px 15px;
   border-radius: 8px;
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.05); /* subtle transparent bg */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* subtle transparent bg */
 }
 
 /* Hover effects */
 .skill:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 15px rgba(108, 164, 11, 0.2); /* light green glow */
-  background-color: rgba(255, 255, 255, 0.08); /* brighten bg */
+  box-shadow: 0 8px 15px rgba(108, 164, 11, 0.2);
+  /* light green glow */
+  background-color: rgba(255, 255, 255, 0.08);
+  /* brighten bg */
 }
 
 /* Bar fill glow on hover */
@@ -334,7 +382,8 @@ footer a:hover {
 }
 
 .skill:hover .skill-name span {
-  color: #c9ff47; /* yellowish-green on hover */
+  color: #c9ff47;
+  /* yellowish-green on hover */
 }
 
 /* Smooth value transitions */
@@ -403,6 +452,7 @@ footer a:hover {
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -452,67 +502,10 @@ footer a:hover {
   margin: 0;
   font-size: 0.9rem;
 }
+
 .custom-modal {
-  min-height: 80vh; /* taller modal */
+  min-height: 80vh;
+  /* taller modal */
 }
 
-
-/* Modal Image Stack */
-
-/* Container for stacked images */
-.image-stack {
-  position: relative;
-  width: 100%;
-  max-width: 250px;
-  height: 280px;
-  margin-left: 140px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-/* All stacked images */
-.stacked-img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: all 0.8s ease; /* Slower transition */
-  opacity: 0.85;
-  transform: scale(0.95);
-}
-
-/* Layered positioning */
-.stacked-img:nth-child(1) {
-  transform: rotate(-6deg) translateX(-20px);
-  z-index: 1;
-}
-.stacked-img:nth-child(2) {
-  transform: rotate(0deg);
-  z-index: 2;
-}
-.stacked-img:nth-child(3) {
-  transform: rotate(6deg) translateX(20px);
-  z-index: 1;
-}
-
-/* Declutter on hover */
-.image-stack:hover .stacked-img {
-  position: relative;
-  transform: scale(1) !important;
-  flex: 1;
-  height: 250px;
-  width: auto;
-  opacity: 1;
-}
-
-/* Active image (if clicked) */
-.stacked-img.active {
-  flex: 2 !important;
-  height: 350px !important;
-  z-index: 5 !important;
-}
-
+/*  */

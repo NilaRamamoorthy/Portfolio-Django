@@ -9,15 +9,27 @@ class Skill(models.Model):
 
 
 
+from django.db import models
+
+class Technology(models.Model):
+    name = models.CharField(max_length=100)
+    icon = models.ImageField(upload_to='technologies/')  # store tech icons in /media/technologies/
+
+    def __str__(self):
+        return self.name
+
+
 class Project(models.Model):
     title = models.CharField(max_length=100)
     short_description = models.CharField(max_length=200)
     long_description = models.TextField()
     github_link = models.URLField()
     live_link = models.URLField()
+    technologies = models.ManyToManyField(Technology, related_name='projects', blank=True)
 
     def __str__(self):
         return self.title
+
 
 
 class ProjectImage(models.Model):
