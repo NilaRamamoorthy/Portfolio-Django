@@ -10,29 +10,26 @@ body {
   background-size: 400% 400%;
   animation: gradientBG 12s ease infinite;
   color: black;
-  /* background: #fff;
-box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
-
 }
 
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-@media (max-width: 768px) {
+
+ @media (max-width: 1024px) {
   body {
-    background: linear-gradient(-45deg, #3b5ba5, #5b7bd0, #7cd9f0, #46b8d0);
+    background: linear-gradient(-45deg, #3b5ba5, #5b7bd0, #7cd9f0, #46b8d0) !important;
   }
 }
+
+/* @media (max-width: 1024px) {
+  body {
+    background: pink !important;
+  }
+} */
+
 /* === Falling Snow Animation === */
 .snowflake {
   position: fixed;
@@ -41,7 +38,7 @@ box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
   border-radius: 50%;
   opacity: 0.8;
   z-index: 9999;
-  /* 
+/*   
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite; */
