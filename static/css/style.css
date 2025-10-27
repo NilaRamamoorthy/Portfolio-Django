@@ -20,7 +20,7 @@ body {
 
  @media (max-width: 1024px) {
   body {
-    background: linear-gradient(-45deg, #3b5ba5, #5b7bd0, #7cd9f0, #46b8d0) !important;
+    background: linear-gradient(-45deg, #7cd9f0, #46b8d0) !important;
   }
 }
 
